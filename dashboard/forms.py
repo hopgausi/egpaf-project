@@ -22,3 +22,4 @@ class PatientForm(ModelForm):
         if birthdate < (datetime.date.today()-relativedelta(years=115)):
             raise forms.ValidationError(f"The date cannot be less than {datetime.date.today()-relativedelta(years=+115)}")
             return birthdate
+        return birthdate
