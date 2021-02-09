@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'account/css/bootstrap.min.css' %}">
+
+ <!-- Custom CSS-->
+    <link rel="stylesheet" href="{% static 'account/css/style.css' %}">
+
+  {% if title %}
+    <title>Patient Management | {{title}}</title>
+  {% else %}
+    <title>Patient Management</title>
+  {% endif %}
+    
+  </head>
+  <body>
+<nav class="navbar navbar-expand-sm">
+  
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+     
+    {% if user.is_authenticated %}
+      <li class="nav-item">
+      <a class="nav-link btn btn-danger" href="{% url 'logout'%}">Logout</a>
+    </li>
+    {% endif %}
+  </ul>
+
+</nav>
+
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags}} text-center">
+    <p>{{ message }}</p>
+  </div>
+{% endfor %}
+    {% block content %}{% endblock content %}
+
+
+    <footer class="mt-5 border-top">
+  <div class="text-center p-2">
+    <p class="text-black-50">Copyright &copy; 2021, Hopson Gausi. All rights reserved.</p>
+  </div>
+</footer>
+
+
+    <!-- Jquery js-->
+    <script src="{% static 'account/js/jquery/jquery-3.5.1.js' %}"></script>
+    <!-- Bootstrap js-->
+    <script src="{% static 'account/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

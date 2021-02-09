@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div>
+        <h1>Welcome {% if request.user.is_authenticated %}
+        <span class="bold">{{ user.username }}</span>
+    {% endif %}</h1>
+    </div>
+    
+    <div class="centered mt-5 w-50">
+    <p>Dashboard</p>
+        <a href="{% url 'create_patient' %}" class="btn btn-primary">Create Patient</a>
+        <a href="{% url 'patients' %}" class="btn btn-primary">View Patients</a>
+        <a href="{% url 'users' %}" class="btn btn-primary">View Users/Providers</a>
+    </div>
+</div>
+
+{% endblock content %}

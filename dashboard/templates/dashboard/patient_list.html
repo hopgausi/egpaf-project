@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'dashboard' %}">Back Home</a>
+    <div class="mt-5 mb-5 text-center">
+    <h2>List of Patients</h2>
+        <!-- Actual search box -->
+    <div class="form-group has-search">
+       <form action="{% url 'dashboard' %}">
+             <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" name="q" class="form-control" placeholder="Search by name OR by district">   
+       </form>
+    </div>
+        <div class="table-responsive-md">
+        <table class="table table-hover border-bottom">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Current Address</th>
+            <th scope="col">Occupation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+        
+                <tr style="transform: rotate(0);">
+                    <th scope="row"><a href="{% url 'dashboard' %}" class="stretched-link">{{ forloop.counter }}</a></th>
+                    <td>{{ patient.first_name}}</td>
+                    <td>{{ patient.last_name}}</td>
+                    <td>{{ patient.gender}}</td>
+                    <td>{{ patient.birthdate}}</td>
+                    <td>{{ patient.district}}, {{ patient.village}}</td>
+                    <td>{{ patient.occupation}}</td>
+                    
+                </tr>
+            
+        {% endfor %}
+            
+        </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
