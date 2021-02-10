@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'patient' %}">Back Home</a>
+     <a href="{% url 'patients' %}">View Patients</a>
+    <div class="mt-5 mb-5 text-center">
+    <a href="{% url 'patient_detail' patient.id %}" class="float-left mb-3"> Go Back </a>
+    <h2>Patient's Health Record for {{ patient.first_name}} {{ patient.last_name}}</h2>
+     {% if assessments %}
+        <div class="table-responsive-md">
+        <table class="table table-hover border-bottom">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">Visit Date</th>
+            <th scope="col">Diagnosis</th>
+            <th scope="col">Weight(kgs)</th>
+            <th scope="col">Height(m)</th>
+            <th scope="col">Temperature(C)</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assessment in assessments %}
+        
+                <tr> 
+                    <td>{{assessment.visit_date}}</td>
+                    <td>{{assessment.diagnosis}}</td>
+                    <td>{{assessment.weight}}</td>
+                    <td>{{assessment.height}}</td>
+                    <td>{{assessment.temperature}}</td>
+                    
+                </tr>
+            
+        {% endfor %}
+            
+        </tbody>
+        </table>
+        </div>
+    </div>
+    {% else %}
+    <p>Health records not available</p>
+    {% endif %}
+</div>
+
+{% endblock content %}

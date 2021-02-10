@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+<a href="{% url 'patient' %}">Home</a>
+<a href="{% url 'patients' %}">View Patients</a>
+    <div class="mt-5 mb-5 text-center w-50 centered">
+         <a href="{% url 'patient_detail' patient.id %}" class="float-left mb-3"> Go Back </a>
+            <form action="{% url 'add_patient_data' patient.id %}" method="post">
+            
+            <legend class="mb-3 border-bottom bold"><h1>Patient Assessment Form</h1></legend>
+            <legend class="mb-5 border-bottom bold"><h3>Patient: {{ patient.first_name}} {{ patient.last_name}}</h3></legend>
+                {% csrf_token %}
+                {{ form|crispy}}
+                <input type="submit" value="Submit Form" class="btn btn-primary">
+            </form>
+    </div>
+</div>
+
+{% endblock content %}

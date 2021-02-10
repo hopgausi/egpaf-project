@@ -35,3 +35,8 @@
         pointer-events: none;
         color: #aaa;
     }
+    
+    .card-body p {
+        display: inline-block;
+        padding-left: 20px;
+    }

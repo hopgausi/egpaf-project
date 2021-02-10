@@ -6,7 +6,7 @@ from django.contrib import messages
 
 def register(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('patient')
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
