@@ -5,7 +5,7 @@ Simple software development project that register users and creates patients and
 # OR  
   
 # Run locally on your machine
-#NOTE: have python =>3.8. can installed from https://www.python.org/  
+#NOTE: have python =>3.8 on your machine. can installed from https://www.python.org/  
 Clone the repository 
 `git clone https://github.com/hopgausi/egpaf-project.git`
 # install requirements
