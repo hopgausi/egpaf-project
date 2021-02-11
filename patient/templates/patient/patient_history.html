@@ -22,7 +22,7 @@
         {% for assessment in assessments %}
         
                 <tr> 
-                    <td>{{assessment.visit_date}}</td>
+                    <td>{{assessment.visit_date|date:'Y-m-d'}}</td>
                     <td>{{assessment.diagnosis}}</td>
                     <td>{{assessment.weight}}</td>
                     <td>{{assessment.height}}</td>

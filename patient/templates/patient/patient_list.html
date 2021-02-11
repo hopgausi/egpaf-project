@@ -10,9 +10,8 @@
     <h2>List of Patients</h2>
     {% endif %}
         <!-- Actual search box -->
-    <div class="form-group has-search">
+    <div class="form-group has-search w-50 float-right">
        <form action="{% url 'search' %}">
-             <span class="fa fa-search form-control-feedback"></span>
             <input type="text" name="q" class="form-control" placeholder="Search by full name Or first name Or last name or  full name and district">   
        </form>
     </div>

@@ -4,8 +4,6 @@ from .models import Patient, Assessment
 from django import forms
 import datetime
 from dateutil.relativedelta import relativedelta
-from measurement.measures import Weight
-from django_measurement.forms import MeasurementField
 
 
 class PatientForm(ModelForm):
@@ -46,3 +44,24 @@ class AssessmentForm(ModelForm):
             raise forms.ValidationError("The date cannot be greater than today's date")
             return visit_date
         return visit_date
+    
+    def clean_weight(self):
+        weight = self.cleaned_data.get("weight")
+        if weight <= 0:
+            raise forms.ValidationError("Enter valid weight ( can't be <or = 0kgs)")
+            return weight
+        return weight
+    
+    def clean_height(self):
+        height = self.cleaned_data.get("height")
+        if height <= 8:
+            raise forms.ValidationError("Enter valid height (between >8cm & < 500cm)")
+            return height
+        return height
+    
+    def clean_temperature(self):
+        temperature = self.cleaned_data.get("temperature")
+        if temperature <= 0:
+            raise forms.ValidationError("Enter valid temperature (can't be < 0 degrees)")
+            return temperature
+        return temperature
